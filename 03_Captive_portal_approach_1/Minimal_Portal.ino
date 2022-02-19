@@ -7,12 +7,20 @@ IPAddress apIP(172, 217, 28, 1);
 DNSServer dnsServer;
 ESP8266WebServer webServer(80);
 
-String responseHTML = "<!DOCTYPE html><html><head><title>A Minimal Example Page</title></head><body><p>Hello!</p></body></html>";
+String responseHTML = "<!DOCTYPE html>"
+"<html>"
+"<head>"
+"<title>A Minimal Example Page</title>"
+"</head>"
+"<body>"
+"<p>Hello!</p>"
+"</body>"
+"</html>";
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   WiFi.mode(WIFI_AP);
-  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255,255,255,0));
   WiFi.softAP("Minimal Example Wifi");
   dnsServer.start(DNS_PORT, "*", apIP);
   webServer.onNotFound([]() {
@@ -25,7 +33,7 @@ void setup() {
 }
 
 void loop() {
- if (WiFi.softAPgetStationNum() == 0) 
+ if (WiFi.softAPgetStationNum() == 0)
  {
     delay(100);
  } else {
